@@ -9,14 +9,12 @@ public class DoctorDto {
     private String name;
     private String lastName;
     private Integer pesel;
-    private Set<Patient> patientSet;
 
-    public DoctorDto(Integer id, String name, String lastName, Integer pesel, Set<Patient> patientSet) {
+    public DoctorDto(Integer id, String name, String lastName, Integer pesel) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.pesel = pesel;
-        this.patientSet = patientSet;
     }
 
     public Integer getId() {
@@ -51,11 +49,4 @@ public class DoctorDto {
         this.pesel = pesel;
     }
 
-    public Set<Patient> getPatientSet() {
-        return patientSet;
-    }
-
-    public void setPatientSet(Set<Patient> patientSet) {
-        this.patientSet = patientSet;
-    }
 }

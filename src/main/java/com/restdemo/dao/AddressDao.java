@@ -38,6 +38,6 @@ public class AddressDao implements DAO<Address> {
 
     @Override
     public Optional<Address> getById(Integer id) {
-        return Optional.ofNullable(getAll().get(id));
+        return Optional.ofNullable(entityManager.find(Address.class, id));
     }
 }

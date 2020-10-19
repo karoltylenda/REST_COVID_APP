@@ -38,6 +38,6 @@ public class DoctorDao implements DAO<Doctor>{
 
     @Override
     public Optional<Doctor> getById(Integer id) {
-        return Optional.ofNullable(getAll().get(id));
+        return Optional.ofNullable(entityManager.find(Doctor.class, id));
     }
 }

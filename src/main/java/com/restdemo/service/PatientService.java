@@ -21,6 +21,16 @@ public class PatientService {
         return patientDtoList;
     }
 
+    public PatientDto getById(Integer id){
+        Patient patient = patientDAO.getById(id).get();
+        return new PatientDto(patient.getId(),
+                patient.getName(),
+                patient.getLastName(),
+                patient.getPesel(),
+                patient.getDoctor(),
+                patient.getPatientAddress());
+    }
+
     private List<PatientDto> mapPatientListToDtos(List<Patient> patientList) {
         return patientList.stream()
                 .map(patient -> new PatientDto(patient.getId(),

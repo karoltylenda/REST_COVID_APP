@@ -13,15 +13,9 @@ public class Doctor {
     private String lastName;
     @Column(unique = true)
     private Integer pesel;
-    @OneToMany(fetch = FetchType.EAGER)
-    private Set<Patient> patientSet;
 
-    public Doctor(Integer id, String name, String lastName, Integer pesel, Set<Patient> patientSet) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.pesel = pesel;
-        this.patientSet = patientSet;
+    public Doctor() {
+
     }
 
     public Integer getId() {
@@ -56,11 +50,4 @@ public class Doctor {
         this.pesel = pesel;
     }
 
-    public Set<Patient> getPatientSet() {
-        return patientSet;
-    }
-
-    public void setPatientSet(Set<Patient> patientSet) {
-        this.patientSet = patientSet;
-    }
 }

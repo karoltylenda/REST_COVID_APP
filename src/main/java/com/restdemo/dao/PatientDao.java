@@ -1,11 +1,13 @@
 package com.restdemo.dao;
 
 import com.restdemo.model.Patient;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Transactional
@@ -41,7 +43,7 @@ public class PatientDao implements DAO<Patient> {
 
     @Override
     public Optional<Patient> getById(Integer id) {
-        return Optional.ofNullable(getAll().get(id));
+            return Optional.ofNullable(entityManager.find(Patient.class, id));
     }
 
 }
