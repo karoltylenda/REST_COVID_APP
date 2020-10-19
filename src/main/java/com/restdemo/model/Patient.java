@@ -1,6 +1,7 @@
 package com.restdemo.model;
 
 import javax.persistence.*;
+import javax.ws.rs.Consumes;
 import java.util.Objects;
 import java.util.Set;
 
@@ -12,12 +13,15 @@ public class Patient {
     private Integer id;
     private String name;
     private String lastName;
+    @Column(unique = true)
     private Integer pesel;
     private boolean isDoctor;
     @ManyToOne
     private Patient doctor;
     @OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY)
     private Set<Patient> patientSet;
+    @ManyToOne
+    private Address patientAddress;
 
     public Patient() {
     }
@@ -78,6 +82,14 @@ public class Patient {
         this.patientSet = patientSet;
     }
 
+    public Address getPatientAddress() {
+        return patientAddress;
+    }
+
+    public void setPatientAddress(Address patientAddress) {
+        this.patientAddress = patientAddress;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -101,6 +113,7 @@ public class Patient {
                 ", isDoctor=" + isDoctor +
                 ", doctor=" + doctor +
                 ", patientSet=" + patientSet +
+                ", patientAddress=" + patientAddress +
                 '}';
     }
 }
