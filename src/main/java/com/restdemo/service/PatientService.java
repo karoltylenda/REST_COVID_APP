@@ -27,9 +27,7 @@ public class PatientService {
                         patient.getName(),
                         patient.getLastName(),
                         patient.getPesel(),
-                        patient.isDoctor(),
                         patient.getDoctor(),
-                        patient.getPatientSet(),
                         patient.getPatientAddress()))
                 .collect(Collectors.toList());
     }

@@ -15,7 +15,7 @@ public class Address {
     private String street;
     private String streetNr;
     private String localNr;
-    @OneToMany(mappedBy = "patientAddress", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "patientAddress", fetch = FetchType.EAGER)
     private Set<Patient> patientSet;
 
     public Address() {

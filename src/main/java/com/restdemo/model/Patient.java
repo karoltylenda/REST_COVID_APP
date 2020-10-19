@@ -1,7 +1,6 @@
 package com.restdemo.model;
 
 import javax.persistence.*;
-import javax.ws.rs.Consumes;
 import java.util.Objects;
 import java.util.Set;
 
@@ -15,12 +14,9 @@ public class Patient {
     private String lastName;
     @Column(unique = true)
     private Integer pesel;
-    private boolean isDoctor;
-    @ManyToOne
-    private Patient doctor;
-    @OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY)
-    private Set<Patient> patientSet;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Doctor doctor;
+    @ManyToOne(fetch = FetchType.EAGER)
     private Address patientAddress;
 
     public Patient() {
@@ -58,28 +54,12 @@ public class Patient {
         this.pesel = pesel;
     }
 
-    public boolean isDoctor() {
-        return isDoctor;
-    }
-
-    public void setDoctor(boolean doctor) {
-        isDoctor = doctor;
-    }
-
-    public Patient getDoctor() {
+    public Doctor getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(Patient doctor) {
+    public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
-    }
-
-    public Set<Patient> getPatientSet() {
-        return patientSet;
-    }
-
-    public void setPatientSet(Set<Patient> patientSet) {
-        this.patientSet = patientSet;
     }
 
     public Address getPatientAddress() {
@@ -91,28 +71,13 @@ public class Patient {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Patient)) return false;
-        Patient patient = (Patient) o;
-        return Objects.equals(pesel, patient.pesel);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(pesel);
-    }
-
-    @Override
     public String toString() {
         return "Patient{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", pesel=" + pesel +
-                ", isDoctor=" + isDoctor +
                 ", doctor=" + doctor +
-                ", patientSet=" + patientSet +
                 ", patientAddress=" + patientAddress +
                 '}';
     }

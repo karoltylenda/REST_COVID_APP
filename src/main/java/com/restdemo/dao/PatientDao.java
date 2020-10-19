@@ -15,6 +15,10 @@ public class PatientDao implements DAO<Patient> {
     @PersistenceContext
     private EntityManager entityManager;
 
+    public PatientDao() {
+
+    }
+
     @Override
     public List<Patient> getAll() {
         return entityManager.createQuery("FROM Patient", Patient.class).getResultList();
@@ -39,4 +43,5 @@ public class PatientDao implements DAO<Patient> {
     public Optional<Patient> getById(Integer id) {
         return Optional.ofNullable(getAll().get(id));
     }
+
 }

@@ -1,8 +1,7 @@
 package com.restdemo.dto;
 
 import com.restdemo.model.Address;
-import com.restdemo.model.Patient;
-import java.util.Set;
+import com.restdemo.model.Doctor;
 
 public class PatientDto {
 
@@ -10,19 +9,15 @@ public class PatientDto {
     private String name;
     private String lastName;
     private Integer pesel;
-    private boolean isDoctor;
-    private Patient doctor;
-    private Set<Patient> patientSet;
+    private Doctor doctor;
     private Address patientAddress;
 
-    public PatientDto(Integer id, String name, String lastName, Integer pesel, boolean isDoctor, Patient doctor, Set<Patient> patientSet, Address patientAddress) {
+    public PatientDto(Integer id, String name, String lastName, Integer pesel, Doctor doctor, Address patientAddress) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.pesel = pesel;
-        this.isDoctor = isDoctor;
         this.doctor = doctor;
-        this.patientSet = patientSet;
         this.patientAddress = patientAddress;
     }
 
@@ -58,28 +53,12 @@ public class PatientDto {
         this.pesel = pesel;
     }
 
-    public boolean isDoctor() {
-        return isDoctor;
-    }
-
-    public void setDoctor(boolean doctor) {
-        isDoctor = doctor;
-    }
-
-    public Patient getDoctor() {
+    public Doctor getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(Patient doctor) {
+    public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
-    }
-
-    public Set<Patient> getPatientSet() {
-        return patientSet;
-    }
-
-    public void setPatientSet(Set<Patient> patientSet) {
-        this.patientSet = patientSet;
     }
 
     public Address getPatientAddress() {
@@ -97,9 +76,7 @@ public class PatientDto {
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", pesel=" + pesel +
-                ", isDoctor=" + isDoctor +
                 ", doctor=" + doctor +
-                ", patientSet=" + patientSet +
                 ", patientAddress=" + patientAddress +
                 '}';
     }
