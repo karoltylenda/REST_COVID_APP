@@ -29,6 +29,12 @@ public class PatientService {
         return mapPatientToDto(patientDAO.getByPesel(pesel).get());
     }
 
+    public PatientDto getByLastName(String lastName){
+        return mapPatientToDto(patientDAO.getByLastName(lastName).get());
+    }
+
+
+
     private List<PatientDto> mapPatientListToDtos(List<Patient> patientList) {
         return patientList.stream()
                 .map(patient -> new PatientDto(patient.getId(),

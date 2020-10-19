@@ -7,4 +7,5 @@ import java.util.Optional;
 public interface PatientDao extends DAO<Patient> {
 
     Optional<Patient> getByPesel(Integer pesel);
+    Optional<Patient> getByLastName(String lastName);
 }
