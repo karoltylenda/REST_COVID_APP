@@ -31,6 +31,11 @@ public class PatientService {
                 patient.getPatientAddress());
     }
 
+    public PatientDto getByPesel(Integer pesel){
+        //TODO
+        return null;
+    }
+
     private List<PatientDto> mapPatientListToDtos(List<Patient> patientList) {
         return patientList.stream()
                 .map(patient -> new PatientDto(patient.getId(),

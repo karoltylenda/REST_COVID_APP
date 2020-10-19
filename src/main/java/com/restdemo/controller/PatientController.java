@@ -27,4 +27,18 @@ public class PatientController {
     public PatientDto getPatientById(@PathParam("id") Integer id){
         return patientService.getById(id);
     }
+
+    @GET
+    @Path("/query")
+    public PatientDto getPatientByPesel(@QueryParam("pesel") Integer pesel){
+        //TODO
+        return null;
+    }
+
+    @GET
+    @Path("/query")
+    public PatientDto getPatientByLastName(@QueryParam("lastName") String lastName){
+        //TODO
+        return null;
+    }
 }
