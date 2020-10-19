@@ -31,14 +31,14 @@ public class PatientController {
     @GET
     @Path("/query")
     public PatientDto getPatientByPesel(@QueryParam("pesel") Integer pesel){
-        //TODO
-        return null;
+//        return new PatientDto(1,"a", "a", 1234, null, null);
+        return patientService.getByPesel(pesel);
     }
 
-    @GET
-    @Path("/query")
-    public PatientDto getPatientByLastName(@QueryParam("lastName") String lastName){
-        //TODO
-        return null;
-    }
+//    @GET
+//    @Path("/query")
+//    public PatientDto getPatientByLastName(@QueryParam("lastName") String lastName){
+//        //TODO
+//        return null;
+//    }
 }

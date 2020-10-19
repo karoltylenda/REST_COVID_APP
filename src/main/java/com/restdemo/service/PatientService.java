@@ -1,6 +1,6 @@
 package com.restdemo.service;
 
-import com.restdemo.dao.DAO;
+import com.restdemo.dao.PatientDao;
 import com.restdemo.dto.PatientDto;
 import com.restdemo.model.Patient;
 
@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 public class PatientService {
 
     @Inject
-    private DAO<Patient> patientDAO;
+    private PatientDao patientDAO;
 
     public List<PatientDto> getAll(){
         List<Patient> patientList = patientDAO.getAll();
@@ -22,18 +22,11 @@ public class PatientService {
     }
 
     public PatientDto getById(Integer id){
-        Patient patient = patientDAO.getById(id).get();
-        return new PatientDto(patient.getId(),
-                patient.getName(),
-                patient.getLastName(),
-                patient.getPesel(),
-                patient.getDoctor(),
-                patient.getPatientAddress());
+        return mapPatientToDto(patientDAO.getById(id).get());
     }
 
     public PatientDto getByPesel(Integer pesel){
-        //TODO
-        return null;
+        return mapPatientToDto(patientDAO.getByPesel(pesel).get());
     }
 
     private List<PatientDto> mapPatientListToDtos(List<Patient> patientList) {
@@ -45,5 +38,14 @@ public class PatientService {
                         patient.getDoctor(),
                         patient.getPatientAddress()))
                 .collect(Collectors.toList());
+    }
+
+    private PatientDto mapPatientToDto(Patient patient){
+        return new PatientDto(patient.getId(),
+                patient.getName(),
+                patient.getLastName(),
+                patient.getPesel(),
+                patient.getDoctor(),
+                patient.getPatientAddress());
     }
 }
