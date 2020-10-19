@@ -6,7 +6,7 @@
     <data-source>
         <name>java:ds/rest</name>
         <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <url>jdbc:mysql://localhost:3306/contacts?useLegacyDatetimeCode=false&amp;
+        <url>jdbc:mysql://localhost:3306/covid?useLegacyDatetimeCode=false&amp;
             serverTimezone=Europe/Warsaw</url>
         <user>root</user>
         <password>9272927292729272</password>
