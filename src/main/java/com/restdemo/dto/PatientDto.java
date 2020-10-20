@@ -11,8 +11,6 @@ public class PatientDto {
     private String name;
     private String lastName;
     private Integer pesel;
-    @JsonIgnore
-    @JsonProperty("patients")
     private Doctor doctor;
     private Address patientAddress;
 

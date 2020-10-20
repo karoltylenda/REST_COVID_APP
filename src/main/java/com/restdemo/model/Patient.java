@@ -1,5 +1,7 @@
 package com.restdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -52,6 +54,7 @@ public class Patient {
         this.pesel = pesel;
     }
 
+    @JsonIgnore
     public Doctor getDoctor() {
         return doctor;
     }

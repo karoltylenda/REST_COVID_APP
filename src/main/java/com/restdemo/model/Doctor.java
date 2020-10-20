@@ -1,5 +1,7 @@
 package com.restdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -52,6 +54,7 @@ public class Doctor {
         this.pesel = pesel;
     }
 
+    @JsonIgnore
     public Set<Patient> getPatients() {
         return patients;
     }
