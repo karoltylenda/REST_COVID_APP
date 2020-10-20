@@ -61,7 +61,6 @@ public class PatientDaoImpl implements PatientDao {
         try {
             return Optional.ofNullable(entityManager.createQuery("from Patient where lastName like :lastName", Patient.class).setParameter("lastName", lastName).getSingleResult());
         } catch (Exception e){
-            //TODO obs³u¿yæ wyj±tki
             logger.warning(e.getMessage());
             return Optional.of(new Patient());
         }

@@ -28,7 +28,8 @@ public class DoctorService {
                 .map(doctor -> new DoctorDto(doctor.getId(),
                         doctor.getName(),
                         doctor.getLastName(),
-                        doctor.getPesel()))
+                        doctor.getPesel(),
+                        doctor.getPatients()))
                 .collect(Collectors.toList());
     }
 }

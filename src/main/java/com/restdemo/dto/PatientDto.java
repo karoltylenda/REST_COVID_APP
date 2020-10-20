@@ -1,5 +1,7 @@
 package com.restdemo.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.restdemo.model.Address;
 import com.restdemo.model.Doctor;
 
@@ -9,6 +11,8 @@ public class PatientDto {
     private String name;
     private String lastName;
     private Integer pesel;
+    @JsonIgnore
+    @JsonProperty("patients")
     private Doctor doctor;
     private Address patientAddress;
 

@@ -13,6 +13,8 @@ public class Doctor {
     private String lastName;
     @Column(unique = true)
     private Integer pesel;
+    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
+    private Set<Patient> patients;
 
     public Doctor() {
 
@@ -50,4 +52,11 @@ public class Doctor {
         this.pesel = pesel;
     }
 
+    public Set<Patient> getPatients() {
+        return patients;
+    }
+
+    public void setPatients(Set<Patient> patients) {
+        this.patients = patients;
+    }
 }
