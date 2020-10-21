@@ -39,4 +39,10 @@ public class PatientController {
     public PatientDto getPatientByLastName(@QueryParam("lastName") String lastName){
         return patientService.getByLastName(lastName);
     }
+
+    @GET
+    @Path("/queryByDoctorPesel")
+    public List<PatientDto> getPatientByDoctorPesel(@QueryParam("pesel") Integer pesel){
+        return null;
+    }
 }

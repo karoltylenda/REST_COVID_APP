@@ -1,5 +1,6 @@
 package com.restdemo.service;
 
+import com.restdemo.dao.DoctorDao;
 import com.restdemo.dao.PatientDao;
 import com.restdemo.dto.PatientDto;
 import com.restdemo.model.Patient;
@@ -14,6 +15,9 @@ public class PatientService {
 
     @Inject
     private PatientDao patientDAO;
+
+    @Inject
+    private DoctorDao doctorDao;
 
     public List<PatientDto> getAll(){
         List<Patient> patientList = patientDAO.getAll();
@@ -33,7 +37,10 @@ public class PatientService {
         return mapPatientToDto(patientDAO.getByLastName(lastName).get());
     }
 
-
+    public List<PatientDto> getByDoctorPesel(Integer pesel){
+        Integer doctorId = doctorDao.getByPesel(pesel).get().getId();
+        return mapPatientListToDtos(patientDAO.getByDoctorId(doctorId));
+    }
 
     private List<PatientDto> mapPatientListToDtos(List<Patient> patientList) {
         return patientList.stream()

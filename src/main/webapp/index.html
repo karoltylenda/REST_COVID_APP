@@ -26,19 +26,19 @@
         <br>
     </form>
 
-    To select patients by PESEL please fill this form: <br>
+    To find patient by PESEL please fill this form: <br>
     <form method="get" action="/jjdzr11restdemo/covid/patient/queryByPesel" target="_blank">
         <div class="row justify-content-start">
             <div class="col-4">
                 <input type="text" name="pesel" class="form-control" placeholder="PESEL" aria-label="pesel">
             </div>
             <div class="col-4">
-                <button type="submit" class="btn btn-outline-secondary">Patients by PESEL</button>
+                <button type="submit" class="btn btn-outline-secondary">Patient by PESEL</button>
             </div>
         </div>
-    </form>
+    </form><br>
 
-    To select patients by Lastname please fill this form: <br>
+    To find patients by Lastname please fill this form: <br>
     <form method="get" action="/jjdzr11restdemo/covid/patient/queryByLastName" target="_blank">
         <div class="row justify-content-start">
             <div class="col-4">
@@ -48,7 +48,21 @@
                 <button type="submit" class="btn btn-outline-secondary">Patients by Lastname</button>
             </div>
         </div>
-    </form>
+    </form><br>
+
+    To find patients by Doctor PESEL please fill this form:
+
+    <form method="get" action="/jjdzr11restdemo/covid/patient/queryByDoctorPesel" target="_blank">
+        <div class="row justify-content-start">
+            <div class="col-4">
+                <input type="text" name="pesel" class="form-control" placeholder="pesel" aria-label="pesel">
+            </div>
+            <div class="col-4">
+                <button type="submit" class="btn btn-outline-secondary">Patients by Doctor PESEL</button>
+            </div>
+        </div>
+    </form><br>
+
 </div>
 
 

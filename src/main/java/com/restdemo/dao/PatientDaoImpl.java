@@ -66,4 +66,8 @@ public class PatientDaoImpl implements PatientDao {
         }
     }
 
+    @Override
+    public List<Patient> getByDoctorId(Integer id) {
+        return entityManager.createQuery("from Patient where doctor.id like : id").setParameter("id", id).getResultList();
+    }
 }
