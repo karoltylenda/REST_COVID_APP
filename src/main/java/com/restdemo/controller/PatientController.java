@@ -29,13 +29,13 @@ public class PatientController {
     }
 
     @GET
-    @Path("/query")
+    @Path("/queryByPesel")
     public PatientDto getPatientByPesel(@QueryParam("pesel") Integer pesel){
         return patientService.getByPesel(pesel);
     }
 
     @GET
-    @Path("/query")
+    @Path("/queryByLastName")
     public PatientDto getPatientByLastName(@QueryParam("lastName") String lastName){
         return patientService.getByLastName(lastName);
     }
