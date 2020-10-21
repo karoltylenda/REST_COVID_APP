@@ -1,6 +1,7 @@
 package com.restdemo.model;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -83,6 +84,24 @@ public class Address {
 
     public void setPatientSet(Set<Patient> patientSet) {
         this.patientSet = patientSet;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(district, address.district) &&
+                Objects.equals(city, address.city) &&
+                Objects.equals(postalCode, address.postalCode) &&
+                Objects.equals(street, address.street) &&
+                Objects.equals(streetNr, address.streetNr) &&
+                Objects.equals(localNr, address.localNr);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(district, city, postalCode, street, streetNr, localNr);
     }
 
     @Override

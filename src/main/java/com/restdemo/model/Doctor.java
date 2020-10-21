@@ -3,6 +3,7 @@ package com.restdemo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -61,5 +62,29 @@ public class Doctor {
 
     public void setPatients(Set<Patient> patients) {
         this.patients = patients;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Doctor)) return false;
+        Doctor doctor = (Doctor) o;
+        return Objects.equals(pesel, doctor.pesel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pesel);
+    }
+
+    @Override
+    public String toString() {
+        return "Doctor{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", pesel=" + pesel +
+                ", patients=" + patients +
+                '}';
     }
 }

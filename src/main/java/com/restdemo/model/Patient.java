@@ -3,6 +3,7 @@ package com.restdemo.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "patient")
@@ -69,6 +70,19 @@ public class Patient {
 
     public void setPatientAddress(Address patientAddress) {
         this.patientAddress = patientAddress;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Patient)) return false;
+        Patient patient = (Patient) o;
+        return Objects.equals(pesel, patient.pesel);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pesel);
     }
 
     @Override

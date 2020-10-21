@@ -1,9 +1,8 @@
 package com.restdemo.service;
 
-import com.restdemo.dao.DAO;
+import com.restdemo.dao.AddressDao;
 import com.restdemo.dto.AddressDto;
 import com.restdemo.model.Address;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
@@ -13,10 +12,10 @@ import java.util.stream.Collectors;
 public class AddressService {
 
     @Inject
-    private DAO<Address> addressDAO;
+    private AddressDao addressDao;
 
     public List<AddressDto> getAll(){
-        List<Address> addressList = addressDAO.getAll();
+        List<Address> addressList = addressDao.getAll();
         List<AddressDto> addressDtoList = mapAddressListToDtos(addressList);
         return addressDtoList;
     }

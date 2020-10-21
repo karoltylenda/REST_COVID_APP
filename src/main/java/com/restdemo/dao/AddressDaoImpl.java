@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Transactional
 @Stateless
-public class AddressDaoImpl implements DAO<Address> {
+public class AddressDaoImpl implements AddressDao {
 
     @PersistenceContext
     private EntityManager entityManager;

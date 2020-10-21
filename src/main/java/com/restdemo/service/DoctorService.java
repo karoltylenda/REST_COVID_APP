@@ -1,15 +1,10 @@
 package com.restdemo.service;
 
-
-import com.restdemo.dao.DAO;
 import com.restdemo.dao.DoctorDao;
 import com.restdemo.dto.DoctorDto;
 import com.restdemo.model.Doctor;
-import jdk.dynalink.linker.LinkerServices;
-
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.print.Doc;
 import java.util.List;
 import java.util.stream.Collectors;
 
