@@ -15,6 +15,7 @@ public class AddressDto {
     private String street;
     private String streetNr;
     private String localNr;
+    @JsonIgnore
     private Set<Person> patientSet;
 
     public AddressDto(Integer id, String district, String city, String postalCode, String street, String streetNr, String localNr, Set<Person> patientSet) {

@@ -1,5 +1,6 @@
 package com.restdemo.dao;
 
+import com.restdemo.model.Address;
 import com.restdemo.model.Person;
 
 import javax.ejb.Stateless;
@@ -91,5 +92,15 @@ public class PersonDaoImpl implements PersonDao {
             LOGGER.warning(e.getMessage());
             return Optional.of(new Person());
         }
+    }
+
+    @Override
+    public List<Person> getByCity(String city) {
+        return entityManager.createQuery("FROM Person where address.city like : city", Person.class).setParameter("city", city).getResultList();
+    }
+
+    @Override
+    public List<Person> getByDistrict(String district) {
+        return entityManager.createQuery("FROM Person where address.district like : district", Person.class).setParameter("district", district).getResultList();
     }
 }

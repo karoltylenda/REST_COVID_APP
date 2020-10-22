@@ -12,4 +12,6 @@ public interface PersonDao extends DAO<Person> {
     Optional<Person> getByDoctorId(Integer id);
     Optional<Person> getByDoctorPesel(Integer pesel);
     Optional<Person> getByLastName(String lastName);
+    List<Person> getByCity(String city);
+    List<Person> getByDistrict(String district);
 }

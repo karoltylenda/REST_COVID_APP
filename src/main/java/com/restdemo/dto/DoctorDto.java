@@ -1,5 +1,6 @@
 package com.restdemo.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.restdemo.model.Address;
 import com.restdemo.model.Person;
 import java.util.Set;

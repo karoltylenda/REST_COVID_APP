@@ -49,4 +49,12 @@ public class PatientService {
     public PatientDto getByLastName(String lastName) {
         return mapPatientToPatientDto(personDao.getByLastName(lastName).get());
     }
+
+    public List<PatientDto> getByCity(String city) {
+        return mapPatientsToPatientsDto(personDao.getByCity(city));
+    }
+
+    public List<PatientDto> getByDistrict(String district) {
+        return mapPatientsToPatientsDto(personDao.getByDistrict(district));
+    }
 }
