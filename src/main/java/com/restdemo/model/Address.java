@@ -1,5 +1,7 @@
 package com.restdemo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
@@ -16,8 +18,9 @@ public class Address {
     private String street;
     private String streetNr;
     private String localNr;
-    @OneToMany(mappedBy = "patientAddress", fetch = FetchType.EAGER)
-    private Set<Patient> patientSet;
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Person> patientSet;
 
     public Address() {
     }
@@ -78,11 +81,11 @@ public class Address {
         this.localNr = localNr;
     }
 
-    public Set<Patient> getPatientSet() {
+    public Set<Person> getPatientSet() {
         return patientSet;
     }
 
-    public void setPatientSet(Set<Patient> patientSet) {
+    public void setPatientSet(Set<Person> patientSet) {
         this.patientSet = patientSet;
     }
 

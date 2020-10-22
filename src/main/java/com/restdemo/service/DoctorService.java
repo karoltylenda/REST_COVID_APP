@@ -1,8 +1,10 @@
 package com.restdemo.service;
 
-import com.restdemo.dao.DoctorDao;
+import com.restdemo.dao.PersonDao;
 import com.restdemo.dto.DoctorDto;
-import com.restdemo.model.Doctor;
+import com.restdemo.dto.PersonDto;
+import com.restdemo.model.Person;
+
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
@@ -12,37 +14,22 @@ import java.util.stream.Collectors;
 public class DoctorService {
 
     @Inject
-    private DoctorDao doctorDao;
+    private PersonDao personDao;
 
     public List<DoctorDto> getAll(){
-        List<Doctor> doctorList = doctorDao.getAll();
-        List<DoctorDto> doctorDtoList = mapDoctorListToDtos(doctorList);
-        return doctorDtoList;
+        List<Person> doctors = personDao.getDoctors();
+        List<DoctorDto> doctorsDto = mapDoctorsToDoctorsDto(doctors);
+        return doctorsDto;
     }
 
-    public DoctorDto getById(Integer id){
-        return mapDoctorToDto(doctorDao.getById(id).get());
-    }
-
-    public DoctorDto getByPesel(Integer pesel){
-        return mapDoctorToDto(doctorDao.getByPesel(pesel).get());
-    }
-
-    private DoctorDto mapDoctorToDto(Doctor doctor) {
-        return new DoctorDto(doctor.getId(),
-                doctor.getName(),
-                doctor.getLastName(),
-                doctor.getPesel(),
-                doctor.getPatients());
-    }
-
-    private List<DoctorDto> mapDoctorListToDtos(List<Doctor> doctorList) {
-        return doctorList.stream()
-                .map(doctor -> new DoctorDto(doctor.getId(),
-                        doctor.getName(),
-                        doctor.getLastName(),
-                        doctor.getPesel(),
-                        doctor.getPatients()))
+    private List<DoctorDto> mapDoctorsToDoctorsDto(List<Person> doctors) {
+        return doctors.stream().map(person -> new DoctorDto(person.getId(),
+                person.getName(),
+                person.getLastName(),
+                person.getPesel(),
+                person.isDoctor(),
+                person.getPatients(),
+                person.getAddress()))
                 .collect(Collectors.toList());
     }
 }

@@ -1,9 +1,7 @@
 package com.restdemo.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.restdemo.model.Address;
-import com.restdemo.model.Doctor;
+import com.restdemo.model.Person;
 
 public class PatientDto {
 
@@ -11,16 +9,18 @@ public class PatientDto {
     private String name;
     private String lastName;
     private Integer pesel;
-    private Doctor doctor;
-    private Address patientAddress;
+    private boolean isDoctor;
+    private Person doctor;
+    private Address address;
 
-    public PatientDto(Integer id, String name, String lastName, Integer pesel, Doctor doctor, Address patientAddress) {
+    public PatientDto(Integer id, String name, String lastName, Integer pesel, boolean isDoctor, Person doctor, Address address) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.pesel = pesel;
+        this.isDoctor = isDoctor;
         this.doctor = doctor;
-        this.patientAddress = patientAddress;
+        this.address = address;
     }
 
     public Integer getId() {
@@ -55,20 +55,28 @@ public class PatientDto {
         this.pesel = pesel;
     }
 
-    public Doctor getDoctor() {
+    public boolean isDoctor() {
+        return isDoctor;
+    }
+
+    public void setDoctor(boolean doctor) {
+        isDoctor = doctor;
+    }
+
+    public Person getDoctor() {
         return doctor;
     }
 
-    public void setDoctor(Doctor doctor) {
+    public void setDoctor(Person doctor) {
         this.doctor = doctor;
     }
 
-    public Address getPatientAddress() {
-        return patientAddress;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setPatientAddress(Address patientAddress) {
-        this.patientAddress = patientAddress;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     @Override
@@ -78,8 +86,9 @@ public class PatientDto {
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", pesel=" + pesel +
+                ", isDoctor=" + isDoctor +
                 ", doctor=" + doctor +
-                ", patientAddress=" + patientAddress +
+                ", address=" + address +
                 '}';
     }
 }

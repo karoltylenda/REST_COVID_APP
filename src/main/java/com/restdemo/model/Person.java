@@ -1,7 +1,6 @@
 package com.restdemo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
@@ -18,9 +17,11 @@ public class Person {
     private Integer pesel;
     @Column(columnDefinition = "boolean default false")
     private boolean isDoctor;
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     private Person doctor;
-    @OneToMany(fetch = FetchType.EAGER, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER)
+    @JsonIgnore
     private Set<Person> patients;
     @ManyToOne(fetch = FetchType.EAGER)
     private Address address;
@@ -68,7 +69,7 @@ public class Person {
         isDoctor = doctor;
     }
 
-    @JsonIgnore
+//    @JsonIgnore
     public Person getDoctor() {
         return doctor;
     }
@@ -77,7 +78,7 @@ public class Person {
         this.doctor = doctor;
     }
 
-    @JsonIgnore
+//    @JsonIgnore
     public Set<Person> getPatients() {
         return patients;
     }

@@ -1,6 +1,9 @@
 package com.restdemo.dto;
 
-import com.restdemo.model.Patient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.restdemo.model.Person;
+
 import java.util.Set;
 
 public class AddressDto {
@@ -12,9 +15,9 @@ public class AddressDto {
     private String street;
     private String streetNr;
     private String localNr;
-    private Set<Patient> patientSet;
+    private Set<Person> patientSet;
 
-    public AddressDto(Integer id, String district, String city, String postalCode, String street, String streetNr, String localNr, Set<Patient> patientSet) {
+    public AddressDto(Integer id, String district, String city, String postalCode, String street, String streetNr, String localNr, Set<Person> patientSet) {
         this.id = id;
         this.district = district;
         this.city = city;
@@ -81,11 +84,11 @@ public class AddressDto {
         this.localNr = localNr;
     }
 
-    public Set<Patient> getPatientSet() {
+    public Set<Person> getPatientSet() {
         return patientSet;
     }
 
-    public void setPatientSet(Set<Patient> patientSet) {
+    public void setPatientSet(Set<Person> patientSet) {
         this.patientSet = patientSet;
     }
 

@@ -1,7 +1,6 @@
 package com.restdemo.controller;
 
 
-import com.restdemo.dao.PersonDao;
 import com.restdemo.dto.PersonDto;
 import com.restdemo.service.PersonService;
 
@@ -21,6 +20,12 @@ public class PersonController {
     @GET
     public List<PersonDto> getAll(){
         return personService.getAll();
+    }
+
+    @GET
+    @Path("/doctors")
+    public List<PersonDto> getAllDoctors(){
+        return personService.getAllDoctors();
     }
 
     @GET

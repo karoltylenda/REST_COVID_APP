@@ -1,8 +1,7 @@
 package com.restdemo.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.restdemo.model.Patient;
-
+import com.restdemo.model.Address;
+import com.restdemo.model.Person;
 import java.util.Set;
 
 public class DoctorDto {
@@ -11,14 +10,18 @@ public class DoctorDto {
     private String name;
     private String lastName;
     private Integer pesel;
-    private Set<Patient> patients;
+    private boolean isDoctor;
+    private Set<Person> patients;
+    private Address address;
 
-    public DoctorDto(Integer id, String name, String lastName, Integer pesel, Set<Patient> patients) {
+    public DoctorDto(Integer id, String name, String lastName, Integer pesel, boolean isDoctor, Set<Person> patients, Address address) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.pesel = pesel;
+        this.isDoctor = isDoctor;
         this.patients = patients;
+        this.address = address;
     }
 
     public Integer getId() {
@@ -53,11 +56,40 @@ public class DoctorDto {
         this.pesel = pesel;
     }
 
-    public Set<Patient> getPatients() {
+    public boolean isDoctor() {
+        return isDoctor;
+    }
+
+    public void setDoctor(boolean doctor) {
+        isDoctor = doctor;
+    }
+
+    public Set<Person> getPatients() {
         return patients;
     }
 
-    public void setPatients(Set<Patient> patients) {
+    public void setPatients(Set<Person> patients) {
         this.patients = patients;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "DoctorDto{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", pesel=" + pesel +
+                ", isDoctor=" + isDoctor +
+                ", patients=" + patients +
+                ", address=" + address +
+                '}';
     }
 }

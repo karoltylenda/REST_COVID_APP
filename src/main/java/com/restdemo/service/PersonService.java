@@ -6,6 +6,7 @@ import com.restdemo.model.Person;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -22,6 +23,10 @@ public class PersonService {
         return personDtoList;
     }
 
+    public List<PersonDto> getAllDoctors(){
+        return mapPersonListToDtos(personDao.getDoctors());
+    }
+
     public PersonDto getById(Integer id){
         return mapPersonToDto(personDao.getById(id).get());
     }
@@ -35,7 +40,10 @@ public class PersonService {
         if (doctor.isDoctor()){
             return mapPersonSetToDtos(doctor.getPatients());
         }
-        else return null;
+        else {
+            List<PersonDto> personDtos = new ArrayList<>();
+            return personDtos;
+        }
     }
 
     private List<PersonDto> mapPersonSetToDtos(Set<Person> personSet){

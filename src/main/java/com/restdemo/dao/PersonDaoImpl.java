@@ -1,6 +1,7 @@
 package com.restdemo.dao;
 
 import com.restdemo.model.Person;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -52,5 +53,15 @@ public class PersonDaoImpl implements PersonDao {
             logger.warning(e.getMessage());
             return Optional.of(new Person());
         }
+    }
+
+    @Override
+    public List<Person> getDoctors() {
+        return entityManager.createQuery("FROM Person where isDoctor like :isDoctor").setParameter("isDoctor", true).getResultList();
+    }
+
+    @Override
+    public List<Person> getPatients() {
+        return entityManager.createQuery("FROM Person").getResultList();
     }
 }
