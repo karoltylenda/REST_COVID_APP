@@ -1,5 +1,6 @@
 package com.restdemo.service;
 
+import com.mysql.cj.xdevapi.AddResult;
 import com.restdemo.dao.AddressDao;
 import com.restdemo.dto.AddressDto;
 import com.restdemo.model.Address;
@@ -31,5 +32,16 @@ public class AddressService {
                         address.getLocalNr(),
                         address.getPatientSet()))
                 .collect(Collectors.toList());
+    }
+
+    public void addAddress(String city, String district, String postalCode, String street, String streetNr, String localNr) {
+        Address address = new Address();
+        address.setCity(city);
+        address.setDistrict(district);
+        address.setPostalCode(postalCode);
+        address.setStreet(street);
+        address.setStreetNr(streetNr);
+        address.setLocalNr(localNr);
+        addressDao.create(address);
     }
 }

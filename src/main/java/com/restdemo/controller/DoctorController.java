@@ -5,6 +5,7 @@ import com.restdemo.service.DoctorService;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -36,9 +37,8 @@ public class DoctorController {
     }
 
     @POST
-    @Path("/addDoctor")
-    public DoctorDto save(@QueryParam("name") String name){
-        LOGGER.warning(name);
-        return new DoctorDto(null, null, null, null, false, null, null);
+    @Path("/add")
+    public Response save(DoctorDto doctorDto){
+        return Response.ok().build();
     }
 }

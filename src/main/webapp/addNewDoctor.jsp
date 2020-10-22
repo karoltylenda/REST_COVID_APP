@@ -1,3 +1,6 @@
+<%@ page import="com.restdemo.dto.AddressDto" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.restdemo.dto.PatientDto" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="pl">
 <head>
@@ -7,10 +10,12 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
+<% List<AddressDto> addresses = (List<AddressDto>) request.getAttribute("addresses"); %>
+<% List<PatientDto> patients = (List<PatientDto>) request.getAttribute("patients"); %>
 <div class="container-fluid">
     <h3>Add new doctor form:</h3><br><br>
 
-    <form method="post" action="/jjdzr11restdemo/covid/doctor/addDoctor">
+    <form method="post" action="${pageContext.request.contextPath}/addNewDoctor">
         <div class="row justify-content-start">
             <div class="col-4">
                 <input type="text" name="name" class="form-control" placeholder="Name" aria-label="name">
@@ -25,6 +30,35 @@
             </div>
             <input type="text" name="isDoctor" value="true" hidden>
         </div><br>
+
+        <!-- list of patients -->
+        <div class="row justify-content-start">
+            <div class="col-4">
+                <select multiple class="form-control" name="patients">
+                    <% for (PatientDto patient: patients) { %>
+                        <option><%=patient.getLastName()%> <%=patient.getName()%>, PESEL nr: <%=patient.getPesel()%></option>
+                    <% } %>
+                </select>
+            </div>
+            <div class="col-4">
+                <a href="#"><button type="button" class="btn btn-primary">Add new patient</button></a>
+            </div>
+        </div><br>
+
+        <!-- list of addresses -->
+        <div class="row justify-content-start">
+            <div class="col-4">
+                <select class="form-control" name="addressId">
+                    <% for (AddressDto address: addresses) { %>
+                    <option value="<%=address.getId()%>"><%=address.getCity()%>, <%=address.getStreet()%> <%=address.getStreetNr()%></option>
+                <% } %>
+                </select>
+            </div>
+            <div class="col-4">
+                <a href="addNewAddress.jsp"><button type="button" class="btn btn-primary">Add new address</button></a>
+            </div>
+        </div><br>
+
         <div class="row justify-content-start">
             <div class="col-4">
                 <button type="submit" class="btn btn-primary">Add new doctor</button>
