@@ -64,4 +64,22 @@ public class PersonDaoImpl implements PersonDao {
     public List<Person> getPatients() {
         return entityManager.createQuery("FROM Person").getResultList();
     }
+
+    @Override
+    public Optional<Person> getByDoctorId(Integer id) {
+        Optional<Person> personOptional = getById(id);
+        if (personOptional.get().isDoctor()){
+            return personOptional;
+        }
+        else return Optional.of(new Person());
+    }
+
+    @Override
+    public Optional<Person> getByDoctorPesel(Integer pesel) {
+        Optional<Person> personOptional = getByPesel(pesel);
+        if (personOptional.get().isDoctor()){
+            return personOptional;
+        }
+        else return Optional.of(new Person());
+    }
 }
