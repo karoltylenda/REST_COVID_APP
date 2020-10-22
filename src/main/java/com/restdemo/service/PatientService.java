@@ -21,6 +21,10 @@ public class PatientService {
         return patientsDto;
     }
 
+    public PatientDto getByPesel(Integer pesel){
+        return mapPatientToPatientDto(personDao.getByPesel(pesel).get());
+    }
+
     private List<PatientDto> mapPatientsToPatientsDto(List<Person> patients) {
         return patients.stream().map(person -> new PatientDto(person.getId(),
                 person.getName(),
@@ -30,5 +34,19 @@ public class PatientService {
                 person.getDoctor(),
                 person.getAddress()))
                 .collect(Collectors.toList());
+    }
+
+    private PatientDto mapPatientToPatientDto(Person patient){
+        return new PatientDto(patient.getId(),
+                patient.getName(),
+                patient.getLastName(),
+                patient.getPesel(),
+                patient.isDoctor(),
+                patient.getDoctor(),
+                patient.getAddress());
+    }
+
+    public PatientDto getByLastName(String lastName) {
+        return mapPatientToPatientDto(personDao.getByLastName(lastName).get());
     }
 }

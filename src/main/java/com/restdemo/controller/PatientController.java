@@ -4,10 +4,7 @@ import com.restdemo.dto.PatientDto;
 import com.restdemo.service.PatientService;
 
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -22,5 +19,17 @@ public class PatientController {
     @GET
     public List<PatientDto> getAll(){
         return patientService.getAll();
+    }
+
+    @GET
+    @Path("/getByPesel")
+    public PatientDto getByPesel(@QueryParam("pesel") Integer pesel){
+        return patientService.getByPesel(pesel);
+    }
+
+    @GET
+    @Path("/getByLastName")
+    public PatientDto getByLastName(@QueryParam("lastName") String lastName){
+        return patientService.getByLastName(lastName);
     }
 }

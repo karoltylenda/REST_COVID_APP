@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 @Stateless
 public class PersonDaoImpl implements PersonDao {
 
-    private static final Logger logger = Logger.getLogger(PersonDaoImpl.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(PersonDaoImpl.class.getName());
 
     @PersistenceContext
     private EntityManager entityManager;
@@ -50,19 +50,19 @@ public class PersonDaoImpl implements PersonDao {
         try {
             return Optional.ofNullable(entityManager.createQuery("FROM Person where pesel like : pesel", Person.class).setParameter("pesel", pesel).getSingleResult());
         } catch (NoResultException e) {
-            logger.warning(e.getMessage());
+            LOGGER.warning(e.getMessage());
             return Optional.of(new Person());
         }
     }
 
     @Override
     public List<Person> getDoctors() {
-        return entityManager.createQuery("FROM Person where isDoctor like :isDoctor").setParameter("isDoctor", true).getResultList();
+        return entityManager.createQuery("FROM Person where isDoctor like :isDoctor", Person.class).setParameter("isDoctor", true).getResultList();
     }
 
     @Override
     public List<Person> getPatients() {
-        return entityManager.createQuery("FROM Person").getResultList();
+        return entityManager.createQuery("FROM Person", Person.class).getResultList();
     }
 
     @Override
@@ -81,5 +81,15 @@ public class PersonDaoImpl implements PersonDao {
             return personOptional;
         }
         else return Optional.of(new Person());
+    }
+
+    @Override
+    public Optional<Person> getByLastName(String lastName) {
+        try {
+            return Optional.ofNullable(entityManager.createQuery("FROM Person where lastName like : lastName", Person.class).setParameter("lastName", lastName).getSingleResult());
+        } catch (NoResultException e){
+            LOGGER.warning(e.getMessage());
+            return Optional.of(new Person());
+        }
     }
 }
