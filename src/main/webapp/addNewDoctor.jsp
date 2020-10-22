@@ -41,7 +41,7 @@
                 </select>
             </div>
             <div class="col-4">
-                <a href="#"><button type="button" class="btn btn-primary">Add new patient</button></a>
+                <a href="addNewPatient"><button type="button" class="btn btn-primary">Add new patient</button></a>
             </div>
         </div><br>
 

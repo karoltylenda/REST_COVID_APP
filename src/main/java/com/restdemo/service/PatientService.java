@@ -1,5 +1,6 @@
 package com.restdemo.service;
 
+import com.restdemo.dao.AddressDao;
 import com.restdemo.dao.PersonDao;
 import com.restdemo.dto.PatientDto;
 import com.restdemo.model.Person;
@@ -14,6 +15,9 @@ public class PatientService {
 
     @Inject
     private PersonDao personDao;
+
+    @Inject
+    private AddressDao addressDao;
 
     public List<PatientDto> getAll(){
         List<Person> patients = personDao.getPatients();
@@ -56,5 +60,16 @@ public class PatientService {
 
     public List<PatientDto> getByDistrict(String district) {
         return mapPatientsToPatientsDto(personDao.getByDistrict(district));
+    }
+
+    public void addPatient(String name, String lastName, Integer pesel, Integer doctorId, Integer addressId) {
+        Person person = new Person();
+        person.setName(name);
+        person.setLastName(lastName);
+        person.setPesel(pesel);
+        person.setDoctor(false);
+        person.setDoctor(personDao.getByDoctorId(doctorId).get());
+        person.setAddress(addressDao.getById(addressId).get());
+        personDao.create(person);
     }
 }

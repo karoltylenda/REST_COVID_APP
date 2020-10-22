@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/addNewAddress")
-public class AddNewAddress extends HttpServlet {
+public class AddNewAddressServlet extends HttpServlet {
 
     @Inject
     private AddressService addressService;

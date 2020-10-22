@@ -12,10 +12,15 @@ public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(nullable = false)
     private String district;
+    @Column(nullable = false)
     private String city;
+    @Column(nullable = false)
     private String postalCode;
+    @Column(nullable = false)
     private String street;
+    @Column(nullable = false)
     private String streetNr;
     private String localNr;
     @OneToMany(fetch = FetchType.EAGER)
