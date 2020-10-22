@@ -13,13 +13,13 @@
         There's my first COVID :P REST Application ;)
     </h4><br><br>
 
-    <form method="get" action="/jjdzr11restdemo/covid/person/patient">
+    <form method="get" action="/jjdzr11restdemo/covid/patient">
         <p>To see all patients in database please push this button:
             <button type="submit" class="btn btn-outline-secondary">Patients</button>
         </p>
         <br>
     </form>
-    <form method="get" action="/jjdzr11restdemo/covid/person/doctors">
+    <form method="get" action="/jjdzr11restdemo/covid/doctor">
         <p>To see all doctors in database please push this button:
             <button type="submit" class="btn btn-outline-secondary">Doctors</button>
         </p>
@@ -27,7 +27,7 @@
     </form>
 
     To find patient by PESEL please fill this form: <br>
-    <form method="get" action="/jjdzr11restdemo/covid/patient/queryByPesel" target="_blank">
+    <form method="get" action="/jjdzr11restdemo/covid/patient/getByPesel" target="_blank">
         <div class="row justify-content-start">
             <div class="col-4">
                 <input type="text" name="pesel" class="form-control" placeholder="PESEL" aria-label="pesel">
