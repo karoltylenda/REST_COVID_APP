@@ -32,18 +32,18 @@
         </div><br>
 
         <!-- list of patients -->
-        <div class="row justify-content-start">
-            <div class="col-4">
-                <select multiple class="form-control" name="patients">
-                    <% for (PatientDto patient: patients) { %>
-                        <option><%=patient.getLastName()%> <%=patient.getName()%>, PESEL nr: <%=patient.getPesel()%></option>
-                    <% } %>
-                </select>
-            </div>
-            <div class="col-4">
-                <a href="addNewPatient"><button type="button" class="btn btn-primary">Add new patient</button></a>
-            </div>
-        </div><br>
+<%--        <div class="row justify-content-start">--%>
+<%--            <div class="col-4">--%>
+<%--                <select multiple class="form-control" name="patientsId">--%>
+<%--                    <% for (PatientDto patient: patients) { %>--%>
+<%--                        <option value="<%=patient.getId()%>"><%=patient.getLastName()%> <%=patient.getName()%>, PESEL nr: <%=patient.getPesel()%></option>--%>
+<%--                    <% } %>--%>
+<%--                </select>--%>
+<%--            </div>--%>
+<%--            <div class="col-4">--%>
+<%--                <a href="addNewPatient"><button type="button" class="btn btn-primary">Add new patient</button></a>--%>
+<%--            </div>--%>
+<%--        </div><br>--%>
 
         <!-- list of addresses -->
         <div class="row justify-content-start">

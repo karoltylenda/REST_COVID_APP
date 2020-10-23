@@ -8,6 +8,7 @@ import com.restdemo.model.Person;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestScoped
@@ -63,13 +64,21 @@ public class PatientService {
     }
 
     public void addPatient(String name, String lastName, Integer pesel, Integer doctorId, Integer addressId) {
-        Person person = new Person();
-        person.setName(name);
-        person.setLastName(lastName);
-        person.setPesel(pesel);
-        person.setDoctor(false);
-        person.setDoctor(personDao.getByDoctorId(doctorId).get());
-        person.setAddress(addressDao.getById(addressId).get());
-        personDao.create(person);
+        Person patient = new Person();
+        Person doctor = personDao.getByDoctorId(doctorId).get();
+
+        patient.setName(name);
+        patient.setLastName(lastName);
+        patient.setPesel(pesel);
+        patient.setDoctor(false);
+        patient.setDoctor(personDao.getByDoctorId(doctorId).get());
+        patient.setAddress(addressDao.getById(addressId).get());
+        personDao.create(patient);
+
+        Set<Person> patients = doctor.getPatients();
+        patients.add(personDao.getByPesel(pesel).get());
+        doctor.setPatients(patients);
+        personDao.update(doctor);
+
     }
 }
