@@ -19,15 +19,27 @@ public class PatientsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        req.setAttribute("patients", patientService.getAll());
-
-        RequestDispatcher view = getServletContext().getRequestDispatcher("/patients_view.jsp");
-        view.forward(req, resp);
+        setRequestDispatcher(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //TODO form to edit patients in post method with reload /patients servlet
+
+        Integer patientId = Integer.valueOf(req.getParameter("patientId"));
+        String name = req.getParameter("name");
+        String lastName = req.getParameter("lastName");
+        Integer pesel = Integer.valueOf(req.getParameter("pesel"));
+        Integer doctorId = Integer.valueOf(req.getParameter("doctorId"));
+
+        patientService.update(patientId, name, lastName, pesel, doctorId);
+
+        setRequestDispatcher(req, resp);
+    }
+    
+    private void setRequestDispatcher(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+        req.setAttribute("patients", patientService.getAll());
+        RequestDispatcher view = getServletContext().getRequestDispatcher("/patients_view.jsp");
+        view.forward(req, resp);
     }
 }

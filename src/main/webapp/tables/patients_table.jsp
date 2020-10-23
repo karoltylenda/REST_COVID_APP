@@ -48,8 +48,14 @@
         </td>
         <% } %>
         <td>
-            <button type="button" class="btn btn-outline-warning">Edit</button>
-            <button type="button" class="btn btn-outline-danger">Delete</button>
+            <form method="get" action="/jjdzr11restdemo/editpatient">
+                <input type="text" name="patientId" value="<%=patient.getId()%>" hidden>
+                <button type="submit" class="btn btn-outline-warning">Edit</button>
+            </form>
+            <form method="get" action="/jjdzr11restdemo/deletepatient">
+                <input type="text" name="patientId" value="<%=patient.getId()%>" hidden>
+                <button type="submit" class="btn btn-outline-danger">Delete</button>
+            </form>
         </td>
     </tr>
     <% } %>

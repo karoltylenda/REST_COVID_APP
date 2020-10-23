@@ -6,9 +6,7 @@ import com.restdemo.dto.DoctorDto;
 import com.restdemo.model.Person;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequestScoped
@@ -35,7 +33,8 @@ public class DoctorService {
     }
 
     private List<DoctorDto> mapDoctorsToDoctorsDto(List<Person> doctors) {
-        return doctors.stream().map(person -> new DoctorDto(person.getId(),
+        return doctors.stream().map(person -> new DoctorDto(
+                person.getId(),
                 person.getName(),
                 person.getLastName(),
                 person.getPesel(),
@@ -46,7 +45,8 @@ public class DoctorService {
     }
 
     private DoctorDto mapPersonToDoctorDto(Person person){
-        return new DoctorDto(person.getId(),
+        return new DoctorDto(
+                person.getId(),
                 person.getName(),
                 person.getLastName(),
                 person.getPesel(),

@@ -81,4 +81,17 @@ public class PatientService {
         personDao.update(doctor);
 
     }
+
+    public PatientDto getById(Integer patientId) {
+        return mapPatientToPatientDto(personDao.getById(patientId).get());
+    }
+
+    public void update(Integer patientId, String name, String lastName, Integer pesel, Integer doctorId) {
+        Person patient = personDao.getById(patientId).get();
+        patient.setName(name);
+        patient.setLastName(lastName);
+        patient.setPesel(pesel);
+        patient.setDoctor(personDao.getByDoctorId(doctorId).get());
+        personDao.update(patient);
+    }
 }
